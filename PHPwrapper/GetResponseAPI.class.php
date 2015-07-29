@@ -128,6 +128,14 @@ class GetResponse
 		if(in_array($operator, $this->textOperators)) $params = array('name' => array($operator => $comparison));
 		$request  = $this->prepRequest('get_campaigns', $params);
 		$response = $this->execute($request);
+		$campaigns = array();
+
+		foreach($response as $campaignID => $campaign) {
+			array_push($campaigns, array(
+				'campaign_id'	=> $campaignID,
+				'data'			=> $campaign
+			));
+		}
 		return $response;
 	}
 	
