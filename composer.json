@@ -1,9 +1,15 @@
 {
-  "name": "codifyllc/getresponse-api-wrapper",
+  "name": "CodifyLLC/GetResponse-PHP-Wrapper",
+  "version": "1.0",
   "authors": [
     {
       "name": "Lucas Hoezee",
       "email": "luke.hoezee@gmail.com"
     }
-  ]
+  ],
+  "dist": {
+    "url": "https://github.com/CodifyLLC/GetResponse-PHP-Wrapper/archive/master.zip",
+    "type": "zip"
+  }
 }
+
