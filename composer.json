@@ -6,10 +6,6 @@
       "name": "Lucas Hoezee",
       "email": "luke.hoezee@gmail.com"
     }
-  ],
-  "dist": {
-    "url": "https://github.com/CodifyLLC/GetResponse-PHP-Wrapper/archive/master.zip",
-    "type": "zip"
-  }
+  ]
 }
 
