@@ -546,6 +546,37 @@ class GetResponse
 	}
 
 	/**
+	 * Get Webforms
+	 * @return object
+	 */
+	public function getWebForms()
+	{
+		$request  = $this->prepRequest('get_webforms');
+		$response = $this->execute($request);
+
+		$webForms = array();
+
+		// Loop through the webforms, and get the campaign data for this form
+		foreach($response as $webFormId => $form) {
+
+			$formArray = array();
+			$formArray['webform_id'] = $webFormId;
+			$formArray['data'] = $form;
+
+			$campaignId = $form->campaign;
+
+			$campaignResponse = $this->getCampaignByID($campaignId);
+
+			$formArray['campaign'] = array(
+				'campaign_id'	=> $campaignId,
+				'data'			=> $campaignResponse->$campaignId
+			);
+			array_push($webForms, $formArray);
+		}
+		return $webForms;
+	}
+
+	/**
 	* Returns true if the supplied ip is valid, false otherwise.
 	* @param string $ip
 	* @access private
