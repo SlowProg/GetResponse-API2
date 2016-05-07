@@ -1,11 +1,24 @@
 {
-  "name": "codifyllc/getresponse-php-wrapper",
-  "version": "1.0.1",
-  "authors": [
-    {
-      "name": "Lucas Hoezee",
-      "email": "luke.hoezee@gmail.com"
+    "name": "codifyllc/getresponse-php-wrapper",
+    "description": "GetResponse API v2 client library.",
+    "keywords": ["GetResponse", "api", "email"],
+    "authors": [
+        {
+            "name": "Lucas Hoezee",
+            "email": "luke.hoezee@gmail.com"
+        },
+        {
+            "name": "Andrey Tyshev",
+            "email": "slowprog@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "GetResponse\\": "src/"
+        }
     }
-  ]
 }
-

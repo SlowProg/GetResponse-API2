@@ -1,20 +1,58 @@
-GetResponse-PHP-Wrapper
-=======================
+## GetResponsePHP
 
-This project was forked from the PHPWrapper hosted by GetResponse, which is no longer being supported.
+GetResponsePHP is a PHP5 implementation of the [GetResponse API](http://apidocs.getresponse.com/en/api/)
 
-It includes patches to work with the new GetResponse API and additional methods.
+## Requirements
 
-Author:
+* PHP >= 5.3.0
+* [PHP cURL](http://php.net/manual/en/book.curl.php)
 
-Robert Staddon<br />
-robert@abundantdesigns.com<br />
-www.abundantdesigns.com<br />
-https://github.com/robertstaddon
+## Release Notes
 
-Co-authored By: <br/>
+Around 50% of API methods have been implemented with the remainder to follow.
 
-Shashank Agarwal<br />
-shashank@thegeeklabs.com<br />
-http://thegeeklabs.com<br/>
-https://github.com/imshashank<br/>
+## Examples
+
+```php
+<?php
+
+$api = new GetResponse('YOUR_API_KEY');
+
+// Connection Testing
+$ping = $api->ping();
+var_dump($ping);
+
+// Account
+$details = $api->getAccountInfo();
+var_dump($details);
+
+// Campaigns
+$campaigns 	 = (array)$api->getCampaigns();
+$campaignIDs = array_keys($campaigns);
+$campaign 	 = $api->getCampaignByID($campaignIDs[0]);
+var_dump($campaigns, $campaign);
+
+// Contacts
+$contacts 	= (array)$api->getContacts(null);
+$contactIDs	= array_keys($contacts);
+$setName 	= $api->setContactName($contactIDs[0], 'John Smith');
+$setCustoms	= $api->setContactCustoms($contactIDs[0], array('title' => 'Mr', 'middle_name' => 'Fred'));
+$customs 	= $api->getContactCustoms($contactIDs[0]);
+$contact 	= $api->getContactByID($contactIDs[0]);
+$geoIP 		= $api->getContactGeoIP($contactIDs[0]);
+$opens 		= $api->getContactOpens($contactIDs[0]);
+$clicks 	= $api->getContactClicks($contactIDs[0]);
+
+// Find the contact ID by using email ID and delete the contact
+$contactEmail	= (array)$api->getContactsByEmail('EMAIL_ID');
+$contactEmailID	= array_keys($contactEmail);
+$deleteResponse	= $api->deleteContact($contactEmailID[0]);
+
+var_dump($contacts, $setName, $setCustoms, $customs, $contact, $geoIP, $opens, $clicks);
+
+// Blacklists
+$addBlacklist = $api->addAccountBlacklist('someone@domain.co.uk');
+$getBlacklist = $api->getAccountBlacklist();
+$delBlacklist = $api->deleteAccountBlacklist('someone@domain.co.uk');
+var_dump($addBlacklist, $getBlacklist, $delBlacklist);
+```
