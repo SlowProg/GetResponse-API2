@@ -1,5 +1,5 @@
 {
-    "name": "codifyllc/getresponse-php-wrapper",
+    "name": "slowprog/getresponse-api2",
     "description": "GetResponse API v2 client library.",
     "keywords": ["GetResponse", "api", "email"],
     "authors": [
