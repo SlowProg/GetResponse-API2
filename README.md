@@ -16,7 +16,7 @@ Around 50% of API methods have been implemented with the remainder to follow.
 ```php
 <?php
 
-$api = new GetResponse('YOUR_API_KEY');
+$api = new GetResponseApi2('YOUR_API_KEY');
 
 // Connection Testing
 $ping = $api->ping();
@@ -55,4 +55,16 @@ $addBlacklist = $api->addAccountBlacklist('someone@domain.co.uk');
 $getBlacklist = $api->getAccountBlacklist();
 $delBlacklist = $api->deleteAccountBlacklist('someone@domain.co.uk');
 var_dump($addBlacklist, $getBlacklist, $delBlacklist);
+
+// or JSON RPC with batch
+
+$api = new GetResponseJsonRpc('YOUR_API_KEY');
+
+$response = $api->batch()
+    ->addContact('qwer', 'asdf@asdf.ff', 'asdf')
+    ->addContact('asdf', 'qwer@asdf.ff', 'qwer')
+    ->send();
+
+var_dump($response);
+
 ```
