@@ -1,6 +1,6 @@
 {
     "name": "slowprog/getresponse-api2",
-    "description": "GetResponse API v2 client library.",
+    "description": "GetResponse API v1.5 client library.",
     "keywords": ["GetResponse", "api", "email"],
     "authors": [
         {
