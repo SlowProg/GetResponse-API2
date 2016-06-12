@@ -50,7 +50,7 @@ abstract class GetResponseApi2Base
 	{
 		$response = $this->execute('ping');
 
-		return $response->ping;
+		return $response['ping'];
 	}
 
 	/**
