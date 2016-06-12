@@ -43,14 +43,14 @@ abstract class GetResponseApi2Base
 	}
 
 	/**
-	 * Test connection to the API, returns "pong" on success
+	 * Test connection to the API, r
 	 * @return string
 	 */
 	public function ping()
 	{
 		$response = $this->execute('ping');
 
-		return $response['ping'];
+		return $response;
 	}
 
 	/**
