@@ -25,6 +25,14 @@ class GetResponseJsonRpc extends GetResponseApi2Base
 	private $isBatch = false;
 
 	/**
+	 * Last error during batch
+	 *
+	 * @access private
+	 * @var string
+	 */
+	private $error;
+
+	/**
 	 * @param string $apiKey
 	 * @param string $apiUrl
 	 * @return void
@@ -51,16 +59,34 @@ class GetResponseJsonRpc extends GetResponseApi2Base
 	}
 
 	/**
+	 * Return last error
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function error()
+	{
+		return $this->error;
+	}
+
+	/**
 	 * Send a batch request
 	 *
 	 * @access public
-	 * @return array
+	 * @return array|false
 	 */
 	public function send()
 	{
 		$this->isBatch = false;
 
 		$this->client->batchSend();
+		
+		if ($this->client->error) {
+			$this->error = $this->client->error;
+			
+			return false;
+		}
+		
 		$response = json_decode($this->client->output, true);
 
 		$result = [];
@@ -98,3 +124,4 @@ class GetResponseJsonRpc extends GetResponseApi2Base
 		}
 	}
 }
+
